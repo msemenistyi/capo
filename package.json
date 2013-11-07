@@ -1,0 +1,31 @@
+{
+  "name": "capo",
+  "version": "0.0.0",
+  "description": "Understand subscriptions and listeners. Get the list of events or event handlers. Capo is a complement for Mediator",
+  "main": "index.js",
+  "scripts": {
+    "test": "test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/msemenistyi/capo.git"
+  },
+  "keywords": [
+    "mediator",
+    "analyzer",
+    "events",
+    "ast"
+  ],
+  "author": "msemenistyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/msemenistyi/capo/issues"
+  },
+  "dependencies": {
+    "esprima": "~1.0.4"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1"
+  }
+}
