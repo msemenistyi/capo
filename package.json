@@ -23,9 +23,5 @@
   },
   "dependencies": {
     "esprima": "~1.0.4"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.7.1"
   }
 }
