@@ -1,6 +1,8 @@
-var esprima = require('esprima');
+var fs = require('fs');
 
-module.exports.find = function(src){
-	var result = esprima.parse(src);
-	return result;
+module.exports.find = function(filePath){
+	fs.readFile(__dirname + filePath, function(err, data){
+		if (err) throw err;
+		console.log(data);
+	});
 };

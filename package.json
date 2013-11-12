@@ -4,7 +4,7 @@
   "description": "Understand subscriptions and listeners. Get the list of events or event handlers. Capo is a complement for Mediator",
   "main": "index.js",
   "scripts": {
-    "test": "test/test.js"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",

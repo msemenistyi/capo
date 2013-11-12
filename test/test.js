@@ -1,6 +1,5 @@
 var capo = require('../');
 var fs = require('fs');
-var src = fs.readFileSync(__dirname + '/fixtures/initial.js');
 
-var result = capo.find(src);
+var result = capo.find('/test/fixtures/initial.js');
 console.log(result);
