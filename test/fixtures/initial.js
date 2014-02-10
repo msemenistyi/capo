@@ -12,13 +12,13 @@ function bindListeners_(){
 		self.playerName = name;
 	});
 
-	mediator.on('game-controller:mode', function(isLocalGame){
+	mediator.subscribe('game-controller:mode', function(isLocalGame){
 		el_.gamesListContainer.toggle();
 	});
 }
 
 function triggerData_(){
-	mediator.trigger('dasd', {asd: 5, 6});
+	mediator.trigger('game-started');
 
-	mediator.trigger('asd:dasd', {asd: 5, 6});
+	mediator.publish('player:initialize', {player: 1});
 }

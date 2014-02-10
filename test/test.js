@@ -1,37 +1,30 @@
-var Capo = require('../');
+var capo = require('../');
 
 describe('One file: capo should', function(){
 
-	var capo,
-		filePath;
-
-	beforeEach(function(){
-		capo = new Capo();
-		filePath = __dirname + '/fixtures/initial.js';
-	});
-
 	it('return subscriptions and triggers properly', function(done){
-		capo.find(filePath, function(err, data){
+		var filePath = __dirname + '/fixtures/initial.js';
+		capo(filePath).find(function(err, data){
 			err.should.be.not.ok;
 
 			data.subscriptions.should.be.Object;
 			data.triggers.should.be.Object;
 
 			data.subscriptions['player-controller:player'].should.be.instanceOf(Array);
-			data.triggers['dasd'].should.be.instanceOf(Object);
+			data.triggers['game-started'].should.be.instanceOf(Object);
 
 			data.subscriptions['player-controller:player'][0].line.should.be.equal(10);
-			data.triggers['dasd'][0].line.should.be.equal(20);
+			data.triggers['game-started'][0].line.should.be.equal(20);
 
 			done();
 		});
 	});
 
 	it('return subscriptions and triggers properly for provided eventName', function(done){
-		capo.find(__dirname + '/fixtures/initial.js', 'dasd', function(err, data){
+		capo(__dirname + '/fixtures/initial.js').find('game-started', function(err, data){
 			err.should.be.not.ok;
 
-			data.triggers['dasd'][0].line.should.be.equal(20);
+			data.triggers['game-started'][0].line.should.be.equal(20);
 
 			done();
 
@@ -39,15 +32,28 @@ describe('One file: capo should', function(){
 	});
 
 	it('return error for not js file', function(done){
-		capo.find(__dirname + '/fixtures/wrong_file_ext.jk', function(err, data){
+		capo(__dirname + '/fixtures/wrong_file_ext.jk').find(function(err, data){
 			err.should.be.ok;
 			done();
 		});
 	});
 
 	it('return error for not existing js file', function(done){
-		capo.find(__dirname + '/fixtures/wrong_file_ext.js', function(err, data){
+		capo(__dirname + '/fixtures/wrong_file_ext.js').find(function(err, data){
 			err.should.be.ok;
+			done();
+		});
+	});
+
+	it('return valid data for custom mediator object name', function(done){
+		var filePath = __dirname + '/fixtures/backbone_mediator.js';
+		capo(filePath, 'Backbone').find(function(err, data){
+			err.should.be.not.ok;
+			Object.keys(data.subscriptions).length.should.be.equal(3);
+			Object.keys(data.triggers).length.should.be.equal(1);
+
+			Object.keys(data.subscriptions)[1].should.be.equal('match:period-end');
+			Object.keys(data.triggers)[0].should.be.equal('game:half-time');
 			done();
 		});
 	});
@@ -56,18 +62,12 @@ describe('One file: capo should', function(){
 
 describe('Folder: capo should', function(){
 
-	var capo;
-
-	beforeEach(function(){
-		capo = new Capo();
-	});
-
 	it('return subscriptions and triggers properly for provided eventName', function(done){
-		capo.find(__dirname + '/fixtures', 'dasd', function(err, data){
+		capo(__dirname + '/fixtures').find('game-started', function(err, data){
 			err.should.be.not.ok;
 
-			data.triggers['dasd'][0].line.should.be.equal(14);
-			data.triggers['dasd'][1].line.should.be.equal(20);
+			data.triggers['game-started'][0].line.should.be.equal(19);
+			data.triggers['game-started'][1].line.should.be.equal(20);
 
 			done();
 
@@ -75,7 +75,7 @@ describe('Folder: capo should', function(){
 	});
 
 	it('return empty subscriptions and triggers for missing eventName', function(done){
-		capo.find(__dirname + '/fixtures', 'taras', function(err, data){
+		capo(__dirname + '/fixtures').find('app:restart', function(err, data){
 			err.should.be.not.ok;
 
 			data.triggers.should.be.empty;

@@ -12,13 +12,14 @@ function bindListeners_(){
 		self.playerName = name;
 	});
 
-	mediator.trigger('dasd', 'qwerty');
+	mediator.publish('player:initialize', {player: 2});
+
 }
 
 function triggerData_(){
-	mediator.on('game-controller:mode', function(isLocalGame){
+	mediator.trigger('game-started');
+
+	mediator.subscribe('game-controller:mode', function(isLocalGame){
 		el_.gamesListContainer.toggle();
 	});
-
-	mediator.trigger('asd:dasd', {asd: 5, 6});
 }
