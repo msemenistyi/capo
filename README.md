@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/msemenistyi/capo.png?branch=master)](https://travis-ci.org/msemenistyi/capo)
 capo
 ====
 
