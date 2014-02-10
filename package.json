@@ -26,6 +26,7 @@
     "should": "~3.1.2"
   },
   "dependencies": {
-    "glob": "~3.2.8"
+    "glob": "~3.2.8",
+    "async": "~0.2.10"
   }
 }
