@@ -16,3 +16,9 @@ function bindListeners_(){
 		el_.gamesListContainer.toggle();
 	});
 }
+
+function triggerData_(){
+	mediator.trigger('dasd', {asd: 5, 6});
+
+	mediator.trigger('asd:dasd', {asd: 5, 6});
+}
