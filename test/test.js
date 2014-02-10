@@ -21,7 +21,7 @@ describe('One file: capo should', function(){
 	});
 
 	it('return subscriptions and triggers properly for provided eventName', function(done){
-		capo(__dirname + '/fixtures/initial.js').find('game-started', function(err, data){
+		capo(__dirname + '/fixtures/initial.js').event('game-started').find(function(err, data){
 			err.should.be.not.ok;
 
 			data.triggers['game-started'][0].line.should.be.equal(20);
@@ -31,7 +31,7 @@ describe('One file: capo should', function(){
 		});
 	});
 
-	it('return subscriptions and triggers properly for Backbone listenTo '  + 
+	it('return subscriptions properly for Backbone listenTo '  + 
 			'method', function(done){
 		capo(__dirname + '/fixtures/backbone_listen_to.js', 'Backbone').find(function(err, data){
 			err.should.be.not.ok;
@@ -40,7 +40,18 @@ describe('One file: capo should', function(){
 			data.subscriptions['match:ticker-state'][0].line.should.be.equal(15);
 
 			done();
+		});
+	});
 
+	it('return subscriptions properly for Backbone listenTo method and defined'  + 
+			' event', function(done){
+		capo(__dirname + '/fixtures/backbone_listen_to.js', 'Backbone').
+				event('match:ticker-state').find(function(err, data){
+			err.should.be.not.ok;
+
+			data.subscriptions['match:ticker-state'][0].line.should.be.equal(15);
+
+			done();
 		});
 	});
 
@@ -78,7 +89,7 @@ describe('One file: capo should', function(){
 describe('Folder: capo should', function(){
 
 	it('return subscriptions and triggers properly for provided eventName', function(done){
-		capo(__dirname + '/fixtures').find('game-started', function(err, data){
+		capo(__dirname + '/fixtures').event('game-started').find(function(err, data){
 			err.should.be.not.ok;
 
 			data.triggers['game-started'][0].line.should.be.equal(19);
@@ -90,7 +101,7 @@ describe('Folder: capo should', function(){
 	});
 
 	it('return empty subscriptions and triggers for missing eventName', function(done){
-		capo(__dirname + '/fixtures').find('app:restart', function(err, data){
+		capo(__dirname + '/fixtures').event('app:restart').find(function(err, data){
 			err.should.be.not.ok;
 
 			data.triggers.should.be.empty;
