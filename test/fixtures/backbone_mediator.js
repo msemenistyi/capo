@@ -26,7 +26,7 @@ define(function (require) {
 		bindListeners: function(){
 			Backbone.on('scoreboard:minutes', this.onMinutesChanged);
 			Backbone.on('match:period-end', this.onHalfTime);
-			Backbone.on('match:ticker-state', this.currentPeriod);
+			Backbone.once('match:ticker-state', this.currentPeriod);
 		},
 
 		currentPeriod: function (period) {

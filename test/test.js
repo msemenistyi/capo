@@ -31,6 +31,19 @@ describe('One file: capo should', function(){
 		});
 	});
 
+	it('return subscriptions and triggers properly for Backbone listenTo '  + 
+			'method', function(done){
+		capo(__dirname + '/fixtures/backbone_listen_to.js', 'Backbone').find(function(err, data){
+			err.should.be.not.ok;
+
+			data.subscriptions['scoreboard:minutes'][0].line.should.be.equal(13);
+			data.subscriptions['match:ticker-state'][0].line.should.be.equal(15);
+
+			done();
+
+		});
+	});
+
 	it('return error for not js file', function(done){
 		capo(__dirname + '/fixtures/wrong_file_ext.jk').find(function(err, data){
 			err.should.be.ok;
@@ -54,6 +67,8 @@ describe('One file: capo should', function(){
 
 			Object.keys(data.subscriptions)[1].should.be.equal('match:period-end');
 			Object.keys(data.triggers)[0].should.be.equal('game:half-time');
+
+			Object.keys(data.subscriptions)[2].should.be.equal('match:ticker-state');
 			done();
 		});
 	});
