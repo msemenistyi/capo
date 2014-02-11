@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "glob": "~3.2.8",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "pick-lines-from-file": "~0.2.2"
   }
 }

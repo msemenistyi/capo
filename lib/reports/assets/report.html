@@ -1,21 +1,31 @@
+</html>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Capo Report</title>
-	<link rel="stylesheet" href="./assets/style.css" />
+	<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-	<div id="events-container"></div>
+	<div id="events-panel">
+		<input type="text" placeholder="Event Name" id="events-search"/>
+		<div id="events-container"></div>
+	</div>
+	<div id="code-container">
+		{{HERE_BE_CODE}}
+	</div>
 	<div id="sub-container"></div>
 	<div id="pub-container"></div>
 
 	<script id="event-template"  type="text/template">
 		<div class="event-name">{{name}}</div>
+		<span class="subs-count">{{subs}} subs</span>
+		<span class="pubs-count">{{pubs}} pubs</span>
 	</script>
 	<script>
-		window.initialDataFromCapo = 'HERE_BE_DATA';
+		window.initialDataFromCapo = '{{HERE_BE_DATA}}';
+		window.fileRelatedDataFromCapo = '{{HERE_BE_FILE_RELATED_DATA}}';
 	</script>
-	<script src="./assets/app.js"></script>
+	<script src="app.js"></script>
 </body>
 </html>
