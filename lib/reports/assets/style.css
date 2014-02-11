@@ -43,3 +43,7 @@ html, body{
 .event-name{
 	font-size: 20px;
 }
+
+.cb-line-number{
+	font-weight: bold;
+}
