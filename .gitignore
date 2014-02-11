@@ -15,4 +15,6 @@ npm-debug.log
 node_modules
 *sublime*
 *grunt*
-*coverage*
+coverage/
+capo/
+lib/reports/report.html

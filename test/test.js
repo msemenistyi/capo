@@ -126,4 +126,15 @@ describe('Reports: capo should', function(){
 			});
 		});
 	});
+
+	it('create report file', function(done){
+		var dirname = __dirname; 
+		capo(__dirname + '/fixtures').report('html').find(function(err, data){
+			fs.readFile('capo/report.html', function(err, data){
+				if (err === null) err = false;
+				err.should.be.not.ok;
+				done();
+			});
+		});
+	});
 });

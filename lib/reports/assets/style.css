@@ -1,0 +1,45 @@
+html, body{
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+}
+
+#events-panel{
+	width: 30%;
+	background-color: #4E4E4A; 
+	color: white;
+	height: 100%; 
+	float: left;
+	overflow: auto;
+}
+
+#events-search{
+	padding-left: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 80%;
+	margin-bottom: 20px;
+}
+
+#sub-container, #pub-container{
+	width: 35%;
+	background-color: #064433;
+	color: white;
+	height: 100%;
+	float: left;
+}
+
+.event-container{
+	height: 50px;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.event-container:hover{
+	background-color: #DD8A3E;
+	cursor: pointer;
+}
+
+.event-name{
+	font-size: 20px;
+}
