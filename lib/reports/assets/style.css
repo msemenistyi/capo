@@ -2,11 +2,13 @@ html, body{
 	padding: 0px;
 	margin: 0px;
 	height: 100%;
+	font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
 }
 
 #events-panel{
+	height: 100%;
 	width: 20%;
-	background-color: #4E4E4A; 
+	background-color: #272727; 
 	color: white;
 	float: left;
 	position: relative;
@@ -26,7 +28,7 @@ html, body{
 	text-decoration: underline;
 	cursor: pointer;
 	margin-left: 13px;
-	font-size: 18px;
+	font-size: 17px;
 	display: none;
 }
 
@@ -34,7 +36,7 @@ html, body{
 	position: absolute;
 	width: 100%;
 	height: 70px;
-	background-color: #4E4E4A; 
+	background-color: #272727; 
 }
 
 
@@ -54,6 +56,10 @@ html, body{
 	overflow: auto;
 }
 
+.subs-count, .pubs-count{
+	font-size: 14px;
+}
+
 .event-container{
 	height: 50px;
 	padding-left: 10px;
@@ -66,11 +72,16 @@ html, body{
 }
 
 .event-name{
-	font-size: 20px;
+	font-size: 17px;
+}
+
+.cb-filename{
+	padding-left: 20px;
 }
 
 .cb-line-number{
 	font-weight: bold;
+	color: #DD8A3E;
 }
 
 #events-options{
@@ -84,4 +95,104 @@ html, body{
 
 h2{
 	text-align: center;
+}
+
+pre .str, code .str { color: #65B042; } /* string  - green */
+pre .kwd, code .kwd { color: #E28964; } /* keyword - dark pink */
+pre .com, code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
+pre .typ, code .typ { color: #89bdff; } /* type - light blue */
+pre .lit, code .lit { color: #3387CC; } /* literal - blue */
+pre .pun, code .pun { color: #fff; } /* punctuation - white */
+pre .pln, code .pln { color: #fff; } /* plaintext - white */
+pre .tag, code .tag { color: #89bdff; } /* html/xml tag    - light blue */
+pre .atn, code .atn { color: #bdb76b; } /* html/xml attribute name  - khaki */
+pre .atv, code .atv { color: #65B042; } /* html/xml attribute value - green */
+pre .dec, code .dec { color: #3387CC; } /* decimal - blue */
+
+pre.prettyprint, code.prettyprint {
+        background-color: #000;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -o-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -khtml-border-radius: 8px;
+        border-radius: 8px;
+}
+
+pre.prettyprint {
+        width: 95%;
+        margin: 1em auto;
+        padding: 1em;
+        white-space: pre-wrap;
+}
+
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
+@media print {
+  pre .str, code .str { color: #060; }
+  pre .kwd, code .kwd { color: #006; font-weight: bold; }
+  pre .com, code .com { color: #600; font-style: italic; }
+  pre .typ, code .typ { color: #404; font-weight: bold; }
+  pre .lit, code .lit { color: #044; }
+  pre .pun, code .pun { color: #440; }
+  pre .pln, code .pln { color: #000; }
+  pre .tag, code .tag { color: #006; font-weight: bold; }
+  pre .atn, code .atn { color: #404; }
+  pre .atv, code .atv { color: #060; }
+}
+
+/* Prettify styling based on Lravel's error sreen */
+pre .str, code .str { color: #E3B446; }  /* string  */
+pre .kwd, code .kwd { color: #DB613B;  font-weight: bold; }  /* keyword*/
+pre .com, code .com { color: #555; font-weight: bold; } /* comment */
+pre .typ, code .typ { color: #fff; }  /* type  */
+pre .lit, code .lit { color: #17CFB6; }  /* literal */
+pre .pun, code .pun { color: #93a1a1; font-weight: bold;  } /* punctuation  */
+pre .pln, code .pln { color: #ccc; }  /* plaintext  */
+pre .tag, code .tag { color: #DB613B; }  /* html/xml tag  */
+pre .htm, code .htm { color: #dda0dd; }  /* html tag */
+pre .xsl, code .xsl { color: #d0a0d0; }  /* xslt tag */
+pre .atn, code .atn { color: #fff; font-weight: normal;} /* html/xml attribute name */
+pre .atv, code .atv { color: #E3B446; }  /* html/xml attribute value  */
+pre .dec, code .dec { color: #fff; }  /* decimal  */
+pre.prettyprint, code.prettyprint {
+	font-weight:normal;
+	font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
+	background: #272727;
+	color: #929292;
+	font-size:12px;
+	line-height:1.5em;
+}
+pre.prettyprint {
+	white-space: pre-wrap;
+}
+
+pre.prettyprint a, code.prettyprint a {
+	text-decoration:none;
+}
+
+.linenums li {
+	color: #A5A5A5;
+}
+
+.linenums li.current{
+	background: rgba(255, 255, 255, .05);
+	padding-top: 4px;
+	padding-left: 1px;
+}
+.linenums li.current.active {
+	background: rgba(255, 255, 255, .1);
+}
+
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9{
+	list-style-type: decimal;
+}
+
+li.active-line{
+	color: #DD8A3E;
+	background: #474747;
+}
+li.context-line{
+	background: #333333;
 }
