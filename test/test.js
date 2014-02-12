@@ -1,5 +1,4 @@
-var capo = require('../'),
-	fs = require('fs');
+var capo = require('../');
 
 describe('One file: capo should', function(){
 
@@ -113,28 +112,15 @@ describe('Folder: capo should', function(){
 		});
 	});
 
-});
+	it('read files in nested folders', function(done){
+		capo(__dirname + '/fixtures').event('player-controller:player').find(function(err, data){
+			err.should.be.not.ok;
 
-describe('Reports: capo should', function(){
-	it('create \'capo\' folder', function(done){
-		var dirname = __dirname; 
-		capo(__dirname + '/fixtures').report('html').find(function(err, data){
-			fs.readdir('capo', function(err, files){
-				if (err === null) err = false;
-				err.should.be.not.ok;
-				done();
-			});
+			data.subscriptions['player-controller:player'].length.should.be.equal(3);
+
+			done();
+
 		});
 	});
 
-	it('create report file', function(done){
-		var dirname = __dirname; 
-		capo(__dirname + '/fixtures').report('html').find(function(err, data){
-			fs.readFile('capo/report.html', function(err, data){
-				if (err === null) err = false;
-				err.should.be.not.ok;
-				done();
-			});
-		});
-	});
 });
