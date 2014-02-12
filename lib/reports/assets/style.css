@@ -27,9 +27,10 @@ html, body{
 	color: #DD8A3E;
 	text-decoration: underline;
 	cursor: pointer;
-	margin-left: 13px;
 	font-size: 17px;
 	display: none;
+	position: absolute;
+	background-color: #272727;
 }
 
 #events-search-container{
@@ -54,6 +55,8 @@ html, body{
 	height: 100%;
 	float: left;
 	overflow: auto;
+	border-left: 2px white solid;
+	box-sizing: border-box;
 }
 
 .subs-count, .pubs-count{
@@ -61,7 +64,6 @@ html, body{
 }
 
 .event-container{
-	height: 50px;
 	padding-left: 10px;
 	padding-top: 10px;
 }
@@ -87,6 +89,7 @@ html, body{
 #events-options{
 	width: 80%;
 	padding-top: 3px;
+	margin-left: 10px;
 }
 
 #events-options label, #events-options input{
