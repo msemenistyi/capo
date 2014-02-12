@@ -10,7 +10,13 @@
 	<div id="events-panel">
 		<div id="events-search-container">
 			<input type="text" placeholder="Event Name" id="events-search"/>
-			<div id="events-show-all">Show all</div>
+			<div id="events-options">
+				<span id="events-show-all">Show all</span>
+				<label for="pubs-check">pubs</label>
+				<input type="checkbox" id="pubs-check" checked="checked" />
+				<label for="subs-check">subs</label>
+				<input type="checkbox" id="subs-check" checked="checked" />
+			</div>
 		</div>
 		<div id="events-wrapper">
 			<div id="events-padding"></div>
@@ -20,8 +26,12 @@
 	<div id="code-container">
 		{{HERE_BE_CODE}}
 	</div>
-	<div id="sub-container"></div>
-	<div id="pub-container"></div>
+	<div id="sub-container">
+		<h2>Subscriptions</h2>
+	</div>
+	<div id="pub-container">
+		<h2>Triggers</h2>
+	</div>
 
 	<script id="event-template"  type="text/template">
 		<div class="event-name">{{name}}</div>

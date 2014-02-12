@@ -27,7 +27,6 @@ html, body{
 	cursor: pointer;
 	margin-left: 13px;
 	font-size: 18px;
-	padding-top: 3px;
 	display: none;
 }
 
@@ -72,4 +71,17 @@ html, body{
 
 .cb-line-number{
 	font-weight: bold;
+}
+
+#events-options{
+	width: 80%;
+	padding-top: 3px;
+}
+
+#events-options label, #events-options input{
+	float: right;
+}
+
+h2{
+	text-align: center;
 }
