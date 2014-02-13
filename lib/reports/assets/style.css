@@ -20,17 +20,44 @@ html, body{
 }
 
 #events-padding{
-	padding-top: 60px;
+	padding-top: 66px;
 }
 
 #events-show-all{
-	color: #DD8A3E;
+	color: #DB613B;
 	text-decoration: underline;
 	cursor: pointer;
 	font-size: 17px;
 	display: none;
 	position: absolute;
 	background-color: #272727;
+}
+
+#sec-label{
+	cursor: pointer;
+}
+
+#sec-label,
+#ec-label{
+	color: #DB613B;
+	padding-left: 10px;
+	font-size: 17px;
+	border-bottom: 2px solid #DB613B;
+}
+
+#strange-events-container-itself{
+	display: none;
+}
+
+#sec-arrow-up{
+	display: none;
+}
+
+#sec-arrow-down,
+#sec-arrow-up{
+	float: right;
+	margin-right: 10px;
+	color: #DB613B;
 }
 
 #events-search-container{

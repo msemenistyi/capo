@@ -1,7 +1,7 @@
 capo [![Build Status](https://travis-ci.org/msemenistyi/capo.png?branch=master)](https://travis-ci.org/msemenistyi/capo)
 ====
 
-Capo will help you cope with your Mediator. All string are touched.
+Capo will help you to cope with your Mediator. All string are touched.
 
 ![Capo](images/capo-logo.png)
 
@@ -13,7 +13,7 @@ Capo is a module that serves for managing event-driven js architectures and
 encourages mediator pattern usage solving its biggest weakness - uncertainty
 of event triggers and listeners.   
 
-Capo looks through files in folder you've provided looking for events being
+Capo opens files in folder you've provided looking for events being
 published or subscribed to and tracks them. The next action is report building.
 By default html reporter is used. In this case 'capo' folder is created in the 
 folder of capo command execution, report.html is the file you are looking for.
@@ -29,6 +29,9 @@ events will be aligned fine and placed one under another.
 Another great usage example is trying to understand someone's event-driven code. These
 are hard times for every dev, because initially you don't have any understanding
 on how this works, but one of the first things you may do is run capo.
+
+Html report contains `Strange events` section which contains events with 0 subs or
+0 pubs. This may help to fix or clean up your code.
 
 ##Usage
 
@@ -119,10 +122,12 @@ is one hash in value array.
 ###Html Report
 ![Html Report](images/capo-html-report.png)
 To the left event panel is situated where all the events found by provided 
-path are placed. You can use filter to find event quicker and then click Show all
+path are placed. You can use filter to find event quicker and then click `Show all`
 button to restore all the events in panel. Subs and pubs checkboxes are used to 
 show just one of them full-sized.  
 Click on event name leads to corresponding subs and pubs columns update.  
+**Strange events** section stands for events which have either 0 pub or 0 sub 
+which may cause problems you are searching for.
 **IE8+**
 
 ###Continuous integration
