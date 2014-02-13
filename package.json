@@ -14,7 +14,10 @@
 		"mediator",
 		"analyzer",
 		"events",
-		"ast"
+    "backbone",
+    "publish",
+    "subscribe",
+    "pubsub"
 	],	
 	"bin": {
 		"capo": "./bin/capo_cli.js"

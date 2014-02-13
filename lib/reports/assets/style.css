@@ -73,6 +73,10 @@ html, body{
 	cursor: pointer;
 }
 
+.event-container.selected-event{
+	background-color: #DD8A3E;
+}
+
 .event-name{
 	font-size: 17px;
 }
