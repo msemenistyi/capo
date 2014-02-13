@@ -126,8 +126,8 @@ path are placed. You can use filter to find event quicker and then click `Show a
 button to restore all the events in panel. Subs and pubs checkboxes are used to 
 show just one of them full-sized.  
 Click on event name leads to corresponding subs and pubs columns update.  
-**Strange events** section stands for events which have either 0 pub or 0 sub 
-which may cause problems you are searching for.
+**Strange events** section stands for events which have either 0 pubs or 0 subs 
+which may cause problems you are searching for. Filtering does not affect this section.    
 **IE8+**
 
 ###Continuous integration
