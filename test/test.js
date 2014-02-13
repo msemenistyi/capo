@@ -83,6 +83,27 @@ describe('One file: capo should', function(){
 			done();
 		});
 	});
+
+	it('not take into consideration minified lines', function(done){
+		var filePath = __dirname + '/fixtures/another_js_file.js';
+		capo(filePath).find(function(err, data){
+			err.should.be.not.ok;
+			Object.keys(data.subscriptions).length.should.be.equal(2);
+			Object.keys(data.triggers).length.should.be.equal(2);			
+			
+			done();
+		});
+	})
+
+	it('will work with double quotes', function(done){
+		var filePath = __dirname + '/fixtures/double_quotes.js';
+		capo(filePath).find(function(err, data){
+			err.should.be.not.ok;
+			Object.keys(data.subscriptions).length.should.be.equal(3);
+			
+			done();
+		});
+	})
 	
 });
 
