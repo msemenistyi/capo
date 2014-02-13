@@ -1,6 +1,6 @@
 {
 	"name": "capo",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Understand subscriptions and listeners. Get the list of events or event handlers. Capo is a complement for Mediator",
 	"main": "index.js",
 	"scripts": {
@@ -16,6 +16,9 @@
 		"events",
 		"ast"
 	],	
+	"bin": {
+		"capo": "./bin/capo_cli.js"
+	},
 	"preferGlobal": true,
 	"author": "msemenistyi",
 	"license": "MIT",

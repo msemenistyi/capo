@@ -1,4 +1,4 @@
-#!/usr/env/bin node
+#!/usr/bin/env node
 
 var realist = require('realist'),
 	capo = require('../lib/capo');
