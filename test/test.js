@@ -95,7 +95,7 @@ describe('One file: capo should', function(){
 		});
 	})
 
-	it('will work with double quotes', function(done){
+	it('work with double quotes', function(done){
 		var filePath = __dirname + '/fixtures/double_quotes.js';
 		capo(filePath).find(function(err, data){
 			err.should.be.not.ok;
@@ -103,7 +103,16 @@ describe('One file: capo should', function(){
 			
 			done();
 		});
-	})
+	});
+
+	it('work with unix endings', function(done){
+		var filePath = __dirname + '/fixtures/unix_linefeed.js';
+		capo(filePath, 'bus').find(function(err, data){
+			err.should.be.not.ok;
+			Object.keys(data.triggers).length.should.be.equal(1);
+			done();
+		});
+	});
 	
 });
 

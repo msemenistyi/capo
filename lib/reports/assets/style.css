@@ -125,7 +125,7 @@ ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents v
 	#events-panel{ display: none;}
 	#sub-container, #pub-container{
 		margin-left: 10%;
-		width: 80%;
+		width: 80% !important;
 		height: auto;
 	}
 	.code-block pre{ font-size: 11px !important;}
@@ -136,7 +136,7 @@ ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents v
 
 }
 
-/* Prettify styling based on Lravel's error sreen */
+/* Prettify styling based on Laravel's error sreen */
 pre .str, code .str { color: #E3B446; }  /* string  */
 pre .kwd, code .kwd { color: #DB613B;  font-weight: bold; }  /* keyword*/
 pre .com, code .com { color: #555; font-weight: bold; font-style: italic; } /* comment */
