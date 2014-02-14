@@ -75,10 +75,11 @@ capo ./javascripts -o Backbone -e -v
 **object**  -o --object - mediator object name (e.g. mediator, Backbone). Case sensitive.  
 **type**    -t --type - two options are available: `pub` or `sub`. String value
 should be specified right after flag. By **default** looks for both.  
-**silent**  -s --silent - don't put anything into stdout. At all. **Default** `false`.  
+**silent**  -s --silent - won't put anything into stdout. At all. **Default** `false`.  
 **report**  -r --report - type of report. Options are: `html`, `cli`. **Default**
 is `html`. String value should be specified right after flag.  
-**verbose** -v --verbose - log all the files processed and other info. **Default** `false`.
+**verbose** -v --verbose - log all the files processed and other info. **Default** `false`.  
+**help**    -h --help - show help
 
 ###Programmatic API
 
