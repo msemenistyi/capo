@@ -113,6 +113,15 @@ describe('One file: capo should', function(){
 			done();
 		});
 	});
+
+	it('find by leading chars of event', function(done){
+		var filePath = __dirname + '/fixtures/backbone_listen_to.js';
+		capo(filePath, 'Backbone').event('match').find(function(err, data){
+			err.should.be.not.ok;
+			Object.keys(data.subscriptions).length.should.be.equal(2);
+			done();
+		});
+	});
 	
 });
 

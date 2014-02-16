@@ -81,7 +81,9 @@ capo ./javascripts -o Backbone -e -v
 ```
 
 ###Options
-**event**   -e --event - event name to perform search on.  
+**event**   -e --event - event name to perform search on. Can be just leading chars
+of event name (e.g. `-e ap` will find all the events starting with these chars:
+`ap, app, ap:message, app:context, application`).  
 **object**  -o --object - mediator object name (e.g. mediator, Backbone). Case sensitive.  
 **type**    -t --type - two options are available: `pub` or `sub`. String value
 should be specified right after flag. By **default** looks for both.  
@@ -96,7 +98,7 @@ While developing you might want to regenerate report quite often so in order not
 to specify all the options through the Command-Line Inteface you may create file
 named **capo.opts** which will contain the same options you could specify in cli.
 
-Example of capo.opts:
+[Example](https://github.com/msemenistyi/capo/blob/master/test/capo.opts) of capo.opts:
 ```shell
 	d:/javascripts
 	-o Backbone
@@ -107,7 +109,8 @@ containing capo.opts file:
 ```shell
 	capo
 ```
-Still arguments in cli will have higher priority than ones in cpao.opts file.  
+Still arguments in cli will have higher priority than ones in capo.opts file.  
+
 
 ###Programmatic API
 
@@ -118,10 +121,10 @@ Still arguments in cli will have higher priority than ones in cpao.opts file.
 	}
 
 ```
-- **capo**(*String* path, *String* mediatorName) - capo factory. Accepts path which
-may be a .js file or folder. Second option is mediatorObject name, which means
-the one that implements inerface of on|once|subscribe and emit|publish|trigger
-and is used in applcation.  
+- **capo**(*String* | *Array* path, *String* mediatorName) - capo factory. Accepts 
+path which may be a .js file path, folder path or array of .js paths. Second 
+option is mediatorObject name, which means the one that implements inerface 
+of on|once|subscribe and emit|publish|trigger and is used in applcation.  
 - **event**(*String* eventName) - event method serves for providing event name
 which will be passed to capo to perform search on it. Is optional in chain. 
 **By default** capo searches for all the events.  
@@ -129,7 +132,7 @@ which will be passed to capo to perform search on it. Is optional in chain.
 two parameters: **err** - capo, pick-lines-from-files or fs errors and **data**.  
 
 **Data** hash consists of:  
-- **Files** - array of js files on which search was performed.  
+- **Files** - array of js files which search was performed on.  
 - **Subscriptions**  
 - **Triggers**   
 Both last properties are hashes with event-named keys. One line containing event
