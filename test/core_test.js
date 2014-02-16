@@ -122,6 +122,15 @@ describe('One file: capo should', function(){
 			done();
 		});
 	});
+
+	it('throw an error in strict mode for subs with no pubs', function(done){
+		var filePath = __dirname + '/fixtures/another_js_file.js';
+		capo(filePath, false, {strict: true}).find(function(err, data){
+			err.should.be.ok;
+			console.log(err);
+			done();
+		});
+	});
 	
 });
 

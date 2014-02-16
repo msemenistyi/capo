@@ -11,6 +11,7 @@ var aliases = {
 	'silent': ['s', 'silent'],
 	'report': ['r', 'report'],
 	'verbose': ['v', 'verbose'],
+	'strict': ['strict'],
 	'help': ['h', 'help']
 };
 

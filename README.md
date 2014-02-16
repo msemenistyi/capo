@@ -33,6 +33,9 @@ on how this works, but one of the first things you may do is run capo.
 Html report contains `Strange events` section which contains events with 0 subs or
 0 pubs. This may help to fix or clean up your code.
 
+Capo also has option of strict mode, which will throw error on sub for event 
+with 0 pubs. It may be used as a build step to avoid such type of errors.
+
 **Warning:** Be aware that capo doesn't work right with event subscriptions
 defined within one method and delimited with space
 ```js
@@ -91,6 +94,7 @@ should be specified right after flag. By **default** looks for both.
 **report**  -r --report - type of report. Options are: `html`, `cli`. **Default**
 is `html`. String value should be specified right after flag.  
 **verbose** -v --verbose - log all the files processed and other info. **Default** `false`.  
+**strict**  --strict - throw error on sub for event with 0 pubs. **Default** `false`.
 **help**    -h --help - show help
 
 ###capo.opts
@@ -121,10 +125,11 @@ Still arguments in cli will have higher priority than ones in capo.opts file.
 	}
 
 ```
-- **capo**(*String* | *Array* path, *String* mediatorName) - capo factory. Accepts 
-path which may be a .js file path, folder path or array of .js paths. Second 
-option is mediatorObject name, which means the one that implements inerface 
-of on|once|subscribe and emit|publish|trigger and is used in applcation.  
+- **capo**(*String* | *Array* path, *String* mediatorName, *Object* options) - 
+capo factory. Accepts path which may be a .js file path, folder path or array of
+ .js paths. Second option is mediatorObject name, which means the one that 
+implements inerface of on|once|subscribe and emit|publish|trigger and is used 
+in applcation. Object parameter contains options hash described earlier.  
 - **event**(*String* eventName) - event method serves for providing event name
 which will be passed to capo to perform search on it. Is optional in chain. 
 **By default** capo searches for all the events.  
