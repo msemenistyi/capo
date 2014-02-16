@@ -1,7 +1,7 @@
 capo [![Build Status](https://travis-ci.org/msemenistyi/capo.png?branch=master)](https://travis-ci.org/msemenistyi/capo)
 ====
 
-Capo will help you to cope with your Mediator. All string are touched.
+Capo will help you to cope with your Mediator. All strings are touched.
 
 ![Capo](images/capo-logo.png)
 

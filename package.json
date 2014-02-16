@@ -37,6 +37,7 @@
     "async": "~0.2.10",
     "pick-lines-from-file": "~0.2.2",
     "realist": "~0.2.5",
-    "text-table": "~0.2.0"
+    "text-table": "~0.2.0",
+    "colors": "~0.6.2"
   }
 }
