@@ -33,6 +33,16 @@ on how this works, but one of the first things you may do is run capo.
 Html report contains `Strange events` section which contains events with 0 subs or
 0 pubs. This may help to fix or clean up your code.
 
+**Warning:** Be aware that capo doesn't work right with event subscriptions
+defined within one method and delimited with space
+```js
+this.listenTo(Backbone, 'asd:asd gdf:gdf asda:asd', function...)
+```
+This code snippet will be interpreted as one event named 
+`asd:asd gdf:gdf asda:asd`. This feature may be implemeted and stay hidden behind 
+the flag of space splitting, but I doubt that there will be request for 
+supporting this.
+
 ##Usage
 
 Search in javascripts folder. Mediator object name is Backbone.
