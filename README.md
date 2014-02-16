@@ -36,37 +36,37 @@ Html report contains `Strange events` section which contains events with 0 subs 
 ##Usage
 
 Search in javascripts folder. Mediator object name is Backbone.
-```
+```shell
 capo ./javascripts -o Backbone
 ```
 
 Print results to command-line.
-```
+```shell
 capo ./javascripts -o Backbone -r cli
 ```
 
 The same query but for exactly 'app:match-context' event.
-```
+```shell
 capo ./javascripts -o Backbone -e app:match-context
 ```
 
 The same query but just for subscribers.
-```
+```shell
 capo ./javascripts -o Backbone -e app:match-context -t subs
 ```
 
 Just for triggers.
-```
+```shell
 capo ./javascripts -o Backbone -e app:match-context -t pubs
 ```
 
 Be quiet.
-```
+```shell
 capo ./javascripts -o Backbone -e -s
 ```
 
 Log everything.
-```
+```shell
 capo ./javascripts -o Backbone -e -v
 ```
 
@@ -80,6 +80,24 @@ should be specified right after flag. By **default** looks for both.
 is `html`. String value should be specified right after flag.  
 **verbose** -v --verbose - log all the files processed and other info. **Default** `false`.  
 **help**    -h --help - show help
+
+###capo.opts
+While developing you might want to regenerate report quite often so in order not
+to specify all the options through the Command-Line Inteface you may create file
+named **capo.opts** which will contain the same options you could specify in cli.
+
+Example of capo.opts:
+```shell
+	d:/javascripts
+	-o Backbone
+	-r cli
+```
+If these are all options you need you may just execute one command in the folder 
+containing capo.opts file:
+```shell
+	capo
+```
+Still arguments in cli will have higher priority than ones in cpao.opts file.  
 
 ###Programmatic API
 

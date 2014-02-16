@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var realist = require('realist'),
+	fs = require('fs'),
 	capo_cli = require('../lib/cli/');
 
 var aliases = {
@@ -13,6 +14,19 @@ var aliases = {
 	'help': ['h', 'help']
 };
 
+try {
+	var opts = fs.readFileSync('capo.opts', 'utf8')
+		.trim()
+		.split(/\s+/);
+
+	process.argv = process.argv.concat(opts);
+} catch (err) {}
+
 realist(function(options, path){
+	for (var i in options){
+		if (options[i] instanceof Array){
+			options[i] = options[i][0];
+		}
+	}
 	capo_cli(options, path);
 }, aliases);
