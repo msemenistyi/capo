@@ -18,6 +18,27 @@ published or subscribed to and tracks them. The next action is report building.
 By default html reporter is used. In this case 'capo' folder is created in the 
 folder of capo command execution, report.html is the file you are looking for.
 
+##Html Report
+![Html Report](images/capo-html-report.png)
+To the left event panel is situated where all the events found by provided 
+path are placed. You can use filter to find event quicker and then click `Show all`
+button to restore all the events in panel. Subs and pubs checkboxes are used to 
+show just one of them full-sized.  
+Click on event name leads to corresponding subs and pubs columns update.  
+**Strange events** section stands for events which have either 0 pubs or 0 subs 
+which may cause problems you are searching for. Filtering does not affect this section.    
+**IE8+**
+
+##Cli Report
+![Cli Report](images/capo-cli-report.png)  
+Preferably this report is used with event option defined.  
+```shell
+	capo /home/web/javascripts -e app:match
+```
+
+
+##Usage patterns
+
 Module may be used on mediator.js, Backbone.js, node.js EventEmitter or any other
 object which provides publish-subscribe interface. 
 
@@ -45,6 +66,7 @@ This code snippet will be interpreted as one event named
 `asd:asd gdf:gdf asda:asd`. This feature may be implemeted and stay hidden behind 
 the flag of space splitting, but I doubt that there will be request for 
 supporting this.
+
 
 ##Usage
 
@@ -154,19 +176,6 @@ is one hash in value array.
 		...
 	}
 ```
-
-
-###Html Report
-![Html Report](images/capo-html-report.png)
-To the left event panel is situated where all the events found by provided 
-path are placed. You can use filter to find event quicker and then click `Show all`
-button to restore all the events in panel. Subs and pubs checkboxes are used to 
-show just one of them full-sized.  
-Click on event name leads to corresponding subs and pubs columns update.  
-**Strange events** section stands for events which have either 0 pubs or 0 subs 
-which may cause problems you are searching for. Filtering does not affect this section.    
-**IE8+**
-
 ###Continuous integration
 For continuous integration grunt plugin may be used.
 [https://github.com/msemenistyi/grunt-capo ](https://github.com/msemenistyi/grunt-capo)

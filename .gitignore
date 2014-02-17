@@ -18,3 +18,4 @@ node_modules
 coverage/
 capo/
 lib/reports/report.html
+capo.opts
