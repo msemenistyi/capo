@@ -127,7 +127,6 @@ describe('One file: capo should', function(){
 		var filePath = __dirname + '/fixtures/another_js_file.js';
 		capo(filePath, false, {strict: true}).find(function(err, data){
 			err.should.be.ok;
-			console.log(err);
 			done();
 		});
 	});

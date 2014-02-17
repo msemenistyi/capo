@@ -84,6 +84,7 @@ html, body{
 	overflow: auto;
 	border-left: 2px white solid;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .subs-count, .pubs-count{
