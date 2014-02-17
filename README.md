@@ -110,8 +110,6 @@ capo ./javascripts -o Backbone -e -v
 of event name (e.g. `-e ap` will find all the events starting with these chars:
 `ap, app, ap:message, app:context, application`).  
 **object**  -o --object - mediator object name (e.g. mediator, Backbone). Case sensitive.  
-**type**    -t --type - two options are available: `pub` or `sub`. String value
-should be specified right after flag. By **default** looks for both.  
 **silent**  -s --silent - won't put anything into stdout. At all. **Default** `false`.  
 **report**  -r --report - type of report. Options are: `html`, `cli`. **Default**
 is `html`. String value should be specified right after flag.  
