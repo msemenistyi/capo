@@ -57,6 +57,9 @@ Html report contains `Strange events` section which contains events with 0 subs 
 Capo also has option of strict mode, which will throw error on sub for event 
 with 0 pubs. It may be used as a build step to avoid such type of errors.
 
+Besides, there is a [generate spy](#spy-generator) option that will generate you listeners for 
+all the triggers found in application. 
+
 **Warning:** Be aware that capo doesn't work right with event subscriptions
 defined within one method and delimited with space
 ```js
@@ -66,7 +69,6 @@ This code snippet will be interpreted as one event named
 `asd:asd gdf:gdf asda:asd`. This feature may be implemeted and stay hidden behind 
 the flag of space splitting, but I doubt that there will be request for 
 supporting this.
-
 
 ##Usage
 
@@ -85,37 +87,66 @@ The same query but for exactly 'app:match-context' event.
 capo ./javascripts -o Backbone -e app:match-context
 ```
 
-The same query but just for subscribers.
-```shell
-capo ./javascripts -o Backbone -e app:match-context -t subs
-```
-
-Just for triggers.
-```shell
-capo ./javascripts -o Backbone -e app:match-context -t pubs
-```
-
 Be quiet.
 ```shell
-capo ./javascripts -o Backbone -e -s
+capo ./javascripts -o Backbone -s
 ```
 
 Log everything.
 ```shell
-capo ./javascripts -o Backbone -e -v
+capo ./javascripts -o Backbone -v
+```
+Generate spy
+```shell
+capo ./javascripts -o Backbone -g
 ```
 
+Generate spy for event/namespace
+```shell
+capo ./javascripts -o Backbone -e app -g
+```
+
+
+
 ###Options
-**event**   -e --event - event name to perform search on. Can be just leading chars
+- **event**   -e --event - event name to perform search on. Can be just leading chars
 of event name (e.g. `-e ap` will find all the events starting with these chars:
 `ap, app, ap:message, app:context, application`).  
-**object**  -o --object - mediator object name (e.g. mediator, Backbone). Case sensitive.  
-**silent**  -s --silent - won't put anything into stdout. At all. **Default** `false`.  
-**report**  -r --report - type of report. Options are: `html`, `cli`. **Default**
+- **object**  -o --object - mediator object name (e.g. mediator, Backbone). Case sensitive.  
+- **silent**  -s --silent - won't put anything into stdout. At all. **Default** `false`.  
+- **report**  -r --report - type of report. Options are: `html`, `cli`. **Default**
 is `html`. String value should be specified right after flag.  
-**verbose** -v --verbose - log all the files processed and other info. **Default** `false`.  
-**strict**  --strict - throw error on sub for event with 0 pubs. **Default** `false`.
-**help**    -h --help - show help
+- **verbose** -v --verbose - log all the files processed and other info. **Default** `false`.  
+- **strict**  --strict - throw error on sub for event with 0 pubs. **Default** `false`.
+- **generate** -g --generate - generate file with listeners for all the triggers. **Default** `false`.  
+- **help**    -h --help - show help
+
+##Spy generator
+Capo may generate spy script if **generate** option is enabled. It will form
+spy.js file in capo folder:
+
+```js
+	function spyHandler(eventName, data){
+		console.log(eventName + ' triggered');
+	}
+
+	mediator.on('player:initialize', spyHandler.bind(null, 'player:initialize'));
+	mediator.on('game-started', spyHandler.bind(null, 'game-started'));
+```
+Script contains subscriptions to all the triggers found by capo in project
+(may be filtered by event name if defined).
+
+spyHandler function serves as a handler for all the listeners. It accepts two parameters:
+- **eventName** - the name of event triggered.
+- **data** - data sent through mediator.  
+
+By default handler contains event name logging when triggered but it may be changed
+to anything you'd like to.
+
+Spy script does not contain any module loading system wrappers so if you're using
+it in your project, you will have wrap spy.js with CommonJS/AMD wrapper if you 
+want to include it or just copy/paste it into one of your files.
+
 
 ###capo.opts
 While developing you might want to regenerate report quite often so in order not

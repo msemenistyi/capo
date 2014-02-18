@@ -5,7 +5,7 @@ describe('HTML Reports: capo should', function(){
 	
 	it('create \'capo\' folder', function(done){
 		capo(__dirname + '/fixtures', false, {generate: true}).report('html').find(function(err, data){
-			fs.readdir('capo', function(err, files){
+			fs.readdir('capo', function(err, file){
 				if (err === null) err = false;
 				err.should.be.not.ok;
 				done();
@@ -14,8 +14,8 @@ describe('HTML Reports: capo should', function(){
 	});
 
 	it('create \'spy\' file', function(done){
-		capo(__dirname + '/fixtures', false, {generate: true}).report('html').find(function(err, data){
-			fs.readFile('capo/spy.js', function(err, files){
+		capo(__dirname + '/fixtures', {generate: true}).report('html').find(function(err, data){
+			fs.readFile('capo/spy.js', function(err, file){
 				if (err === null) err = false;
 				err.should.be.not.ok;
 				done();

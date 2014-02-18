@@ -12,6 +12,7 @@ var aliases = {
 	'report': ['r', 'report'],
 	'verbose': ['v', 'verbose'],
 	'strict': ['strict'],
+	'generate': ['g', 'generate'],
 	'help': ['h', 'help']
 };
 
