@@ -60,16 +60,6 @@ with 0 pubs. It may be used as a build step to avoid such type of errors.
 Besides, there is a [generate spy](#spy-generator) option that will generate you listeners for 
 all the triggers found in application. 
 
-**Warning:** Be aware that capo doesn't work right with event subscriptions
-defined within one method and delimited with space
-```js
-this.listenTo(Backbone, 'asd:asd gdf:gdf asda:asd', function...)
-```
-This code snippet will be interpreted as one event named 
-`asd:asd gdf:gdf asda:asd`. This feature may be implemeted and stay hidden behind 
-the flag of space splitting, but I doubt that there will be request for 
-supporting this.
-
 ##Usage
 
 Search in javascripts folder. Mediator object name is Backbone.
@@ -166,7 +156,6 @@ containing capo.opts file:
 ```
 Still arguments in cli will have higher priority than ones in capo.opts file.  
 
-
 ###Programmatic API
 
 ```js
@@ -205,9 +194,42 @@ is one hash in value array.
 		...
 	}
 ```
-###Continuous integration
+##Continuous integration
 For continuous integration grunt plugin may be used.
 [https://github.com/msemenistyi/grunt-capo ](https://github.com/msemenistyi/grunt-capo)
+
+##Troubleshooting
+
+####capo.opts
+Keep in mind that options in console in capo.opts are concatenated 
+(almost) so if you specify boolean flags in console and start capo.opts with 
+path, it will end up with error.  
+```shell
+	capo -gs
+```
+capo.opts
+```shell
+	./javascripts -e data
+```
+Output:
+```shell
+	capo >>> Path to js file or folder to examine should be specified
+```
+So what you need is to specify in console value for boolean flags
+```shell
+	capo -gs true
+```
+
+####event names
+Be aware that capo doesn't work right with event subscriptions
+defined within one method and delimited with space
+```js
+this.listenTo(Backbone, 'asd:asd gdf:gdf asda:asd', function...)
+```
+This code snippet will be interpreted as one event named 
+`asd:asd gdf:gdf asda:asd`. This feature may be implemeted and stay hidden behind 
+the flag of space splitting, but I doubt that there will be request for 
+supporting this.
 
 ##Contributing
 Feel free to open issues and send PRs, though make sure that you create tests
