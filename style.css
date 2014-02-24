@@ -1,0 +1,230 @@
+html, body{
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
+}
+
+#events-panel{
+	height: 100%;
+	width: 20%;
+	background-color: #272727; 
+	color: white;
+	float: left;
+	position: relative;
+}
+
+#events-wrapper{
+	height: 100%; 
+	overflow: auto;
+}
+
+#events-padding{
+	padding-top: 66px;
+}
+
+#events-show-all{
+	color: #DB613B;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 17px;
+	display: none;
+	position: absolute;
+	background-color: #272727;
+}
+
+#sec-label{
+	cursor: pointer;
+}
+
+#sec-label,
+#ec-label{
+	color: #DB613B;
+	padding-left: 10px;
+	font-size: 17px;
+	border-bottom: 2px solid #DB613B;
+}
+
+#strange-events-container-itself{
+	display: none;
+}
+
+#sec-arrow-up{
+	display: none;
+}
+
+#sec-arrow-down,
+#sec-arrow-up{
+	float: right;
+	margin-right: 10px;
+	color: #DB613B;
+}
+
+#events-search-container{
+	position: absolute;
+	width: 100%;
+	height: 70px;
+	background-color: #272727; 
+}
+
+
+#events-search{
+	padding-left: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 80%;
+}
+
+#sub-container, #pub-container{
+	width: 40%;
+	background-color: #064433;
+	color: white;
+	height: 100%;
+	float: left;
+	overflow: auto;
+	border-left: 2px white solid;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.subs-count, .pubs-count{
+	font-size: 14px;
+}
+
+.event-container{
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.event-container:hover{
+	background-color: #DD8A3E;
+	cursor: pointer;
+}
+
+.event-container.selected-event{
+	background-color: #DD8A3E;
+}
+
+.event-name{
+	font-size: 17px;
+}
+
+.cb-filename{
+	padding-left: 20px;
+}
+
+.cb-line-number{
+	font-weight: bold;
+	color: #DD8A3E;
+}
+
+#events-options{
+	width: 80%;
+	padding-top: 3px;
+	margin-left: 10px;
+}
+
+#events-options label, #events-options input{
+	float: right;
+}
+
+h2{
+	text-align: center;
+}
+
+
+pre.prettyprint {
+	width: 95%;
+	margin: 1em auto;
+	padding: 1em;
+}
+
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
+@media print {
+	pre .str, code .str {	color: #444340 !important;	}
+  pre .kwd, code .kwd { color: #006 !important; ; font-weight: bold;}
+  pre .com, code .com { color: #600 !important; ; font-style: italic;}
+	pre .typ, code .typ{color: black !important;;	font-weight: bold;}
+  pre .lit, code .lit { color: #044 !important; }
+  pre .pun, code .pun { color: #440 !important; }
+	pre .pln, code .pln{color: black !important;}
+  pre .tag, code .tag { color: #006 !important; font-weight: bold; }
+  pre .atn, code .atn { color: #404 !important; }
+  pre .atv, code .atv { color: #060 !important; }
+
+	#events-panel{ display: none;}
+	#sub-container, #pub-container{
+		margin-left: 10%;
+		width: 80% !important;
+		height: auto;
+	}
+	.code-block pre{ font-size: 11px !important;}
+
+	.cb-filename{	color: black;	}
+
+	h2{	color:black;	}
+
+}
+
+/* Prettify styling based on Laravel's error sreen */
+pre .str, code .str { color: #E3B446; }  /* string  */
+pre .kwd, code .kwd { color: #DB613B;  font-weight: bold; }  /* keyword*/
+pre .com, code .com { color: #555; font-weight: bold; font-style: italic; } /* comment */
+pre .typ, code .typ { color: #fff; }  /* type  */
+pre .lit, code .lit { color: #17CFB6; }  /* literal */
+pre .pun, code .pun { color: #93a1a1; font-weight: bold;  } /* punctuation  */
+pre .pln, code .pln { color: #ccc; }  /* plaintext  */
+pre .tag, code .tag { color: #DB613B; }  /* html/xml tag  */
+pre .htm, code .htm { color: #dda0dd; }  /* html tag */
+pre .xsl, code .xsl { color: #d0a0d0; }  /* xslt tag */
+pre .atn, code .atn { color: #fff; font-weight: normal;} /* html/xml attribute name */
+pre .atv, code .atv { color: #E3B446; }  /* html/xml attribute value  */
+pre .dec, code .dec { color: #fff; }  /* decimal  */
+pre.prettyprint, code.prettyprint {
+	font-weight:normal;
+	font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace;
+	background: #272727;
+	color: #929292;
+	font-size:12px;
+	line-height:1.5em;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	border-radius: 8px;
+}
+pre.prettyprint {
+	white-space: pre-wrap;
+}
+
+pre.prettyprint a, code.prettyprint a {
+	text-decoration:none;
+}
+
+.linenums li {
+	color: #A5A5A5;
+}
+
+.linenums li.current{
+	background: rgba(255, 255, 255, .05);
+	padding-top: 4px;
+	padding-left: 1px;
+}
+.linenums li.current.active {
+	background: rgba(255, 255, 255, .1);
+}
+
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9{
+	list-style-type: decimal;
+}
+
+li.active-line{
+	color: #DD8A3E;
+	background: #474747;
+}
+li.context-line{
+	background: #333333;
+}
