@@ -16,7 +16,8 @@ of event triggers and listeners.
 Capo opens files in folder you've provided looking for events being
 published or subscribed to and tracks them. The next action is report building.
 By default html reporter is used. In this case 'capo' folder is created in the 
-folder of capo command execution, report.html is the file you are looking for.
+folder of capo command execution, report.html is the file you are looking for.  
+[Demo](http://msemenistyi.github.io/capo)
 
 ##Html Report
 ![Html Report](images/capo-html-report.png)
