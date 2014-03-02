@@ -20,7 +20,7 @@ html, body{
 }
 
 #events-padding{
-	padding-top: 66px;
+	padding-top: 78px;
 }
 
 #events-show-all{
@@ -63,7 +63,7 @@ html, body{
 #events-search-container{
 	position: absolute;
 	width: 100%;
-	height: 70px;
+	height: 79px;
 	background-color: #272727; 
 }
 
@@ -227,4 +227,132 @@ li.active-line{
 }
 li.context-line{
 	background: #333333;
+}
+
+#ts-text-day{
+	display: none;
+	color: black;
+}
+
+#ts-text-night{
+	color: white;
+}
+
+#ts-text-day, #ts-text-night{
+	cursor: pointer;
+	float: left;
+	margin-left: 4px;
+}
+
+#theme-switcher{
+	overflow: hidden;
+	width: 100%;
+	margin-top: 5px;
+}
+
+#ts-color-night, #ts-color-day{
+	cursor: pointer;
+	float: left;
+	width: 11px;
+	height: 18px;
+	background-color: white;
+}
+
+#ts-color-day{
+	border: 1px solid #272727;
+}
+
+#ts-color-night{
+	border: 1px solid red;
+	background-color: black;
+}
+
+/**************************
+******** day theme ********
+***************************/
+
+.day-theme #ts-color-day{
+	border: 1px solid red;
+}
+
+.day-theme #ts-color-night{
+	border: 1px solid white;
+}
+
+.day-theme #ts-text-night{
+	display: none;
+}
+.day-theme #ts-text-day{
+	display: block;
+}
+
+.day-theme #events-panel{
+	background-color: #fff;  
+	color: black;
+}
+
+.day-theme #events-search-container{
+	background-color: #fff;  
+}
+
+
+.day-theme #sub-container, .day-theme #pub-container{
+	background-color: #fff; 
+	color: black;
+	border-left: 2px black solid;
+}
+
+.day-theme #sec-label,
+.day-theme #ec-label{
+	color: #923500;
+	border-bottom: 2px solid #923500;
+}
+
+.day-theme #sec-arrow-down,
+.day-theme #sec-arrow-up{
+	color: #923500;
+}
+
+.day-theme #events-show-all{
+	color: #923500;
+	background-color: #fff; 
+}
+
+.day-theme .cb-line-number{
+	color: #923500;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+.day-theme ol.linenums { color: #000000; } /* IE indents via margin-left */
+
+.day-theme pre .str, .day-theme code .str { color: #C03030; }  /* string  */
+.day-theme pre .kwd, .day-theme code .kwd { color: #2060A0;  font-weight: bold; }  /* keyword*/
+.day-theme pre .com, .day-theme code .com { color: #406040; font-weight: bold; font-style: italic; } /* comment */
+.day-theme pre .typ, .day-theme code .typ { color: #800080; }  /* type  */
+.day-theme pre .lit, .day-theme code .lit { color: #800000; }  /* literal */
+.day-theme pre .pun, .day-theme code .pun { color: #2C2E2E; font-weight: bold;  } /* punctuation  */
+.day-theme pre .pln, .day-theme code .pln { color: #000; }  /* plaintext  */
+.day-theme pre .tag, .day-theme code .tag { color: #000; }  /* html/xml tag  */
+.day-theme pre .htm, .day-theme code .htm { color: #000; }  /* html tag */
+.day-theme pre .xsl, .day-theme code .xsl { color: #000; }  /* xslt tag */
+.day-theme pre .atn, .day-theme code .atn { color: #000; font-weight: normal;} /* html/xml attribute name */
+.day-theme pre .atv, .day-theme code .atv { color: #8000C0; }  /* html/xml attribute value  */
+.day-theme pre .dec, .day-theme code .dec { color: #0080A0; }  /* decimal  */
+
+.day-theme pre.prettyprint, .day-theme code.prettyprint {
+	background: #C1C1C1;
+	color: #000000;
+}
+
+.day-theme .linenums li {
+	color: #000000;
+}
+
+.day-theme li.active-line{
+	color: #923500;
+	background: #FFFFFF;
+}
+
+.day-theme li.context-line{
+	background: #EBEBEB;
 }
