@@ -16,6 +16,13 @@
 				<input type="checkbox" id="pubs-check" checked="checked" />
 				<label for="subs-check">subs</label>
 				<input type="checkbox" id="subs-check" checked="checked" />
+
+				<div id="theme-switcher">
+					<div id="ts-color-night"></div>
+					<div id="ts-color-day"></div>
+					<div id="ts-text-night">Night theme</div>
+					<div id="ts-text-day">Day theme</div>
+				</div>
 			</div>
 		</div>
 		<div id="events-wrapper">
@@ -35,23 +42,23 @@
 		</div>
 	</div>
 	<div id="code-container">
-		<div class="code-block sub-cb reset-markup"><div class="cb-filename">public/javascripts/Game.js:<span class="cb-line-number">78</span></div><pre class="prettyprint linenums:74">function bindListeners() {
-	el_.gameCells.off('click');
-	mediator.off('reset-markup');
-	el_.gameCells.on('click', onCellClick_);
-	mediator.on('reset-markup', resetMarkup_);
-&nbsp;
-	if(!isLocal_) {
-		mediator.on('socket:turn-network', self.makeTurn);
-	}</pre></div><div class="code-block sub-cb socket-n-turn-network"><div class="cb-filename">public/javascripts/Game.js:<span class="cb-line-number">81</span></div><pre class="prettyprint linenums:77">	el_.gameCells.on('click', onCellClick_);
-	mediator.on('reset-markup', resetMarkup_);
-&nbsp;
-	if(!isLocal_) {
-		mediator.on('socket:turn-network', self.makeTurn);
+		<div class="code-block sub-cb reset-markup"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js:<span class="cb-line-number">78</span></div><pre class="prettyprint linenums:74">	} else {
+		el_.body.toggleClass('turn-allowed', true);
 	}
+&nbsp;
+	mediator.on('reset-markup', resetMarkup_);
 }
 &nbsp;
-function switchPlayer() {</pre></div><div class="code-block pub-cb game-n-turn-local"><div class="cb-filename">public/javascripts/Game.js:<span class="cb-line-number">124</span></div><pre class="prettyprint linenums:120">		};
+function switchPlayer() {
+	if (isLocal_){</pre></div><div class="code-block sub-cb socket-n-turn-network"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js:<span class="cb-line-number">93</span></div><pre class="prettyprint linenums:89">	el_.body.toggleClass('turn-allowed', false);
+}
+&nbsp;
+function initializeSubscriptions(){
+	mediator.on('socket:turn-network', self.makeTurn);
+}
+&nbsp;
+function resetMarkup_(){
+	el_.rivalName.text('');</pre></div><div class="code-block pub-cb game-n-turn-local"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js:<span class="cb-line-number">124</span></div><pre class="prettyprint linenums:120">		};
 		if (isLocal_){
 			self.makeTurn(options);
 		} else {
@@ -59,15 +66,15 @@ function switchPlayer() {</pre></div><div class="code-block pub-cb game-n-turn-l
 		}
 	}
 }
-&nbsp;</pre></div><div class="code-block sub-cb socket-n-game-started"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">26</span></div><pre class="prettyprint linenums:22">&nbsp;
+&nbsp;</pre></div><div class="code-block sub-cb socket-n-game-started"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">26</span></div><pre class="prettyprint linenums:22">&nbsp;
 el_.newGameButton.on('click', newGame_);
 el_.switchButton.on('change', onSwitch_);
 &nbsp;
 mediator.subscribe('socket:game-started', onGameStarted_);
 &nbsp;
 var shape_ = enums.CellStates.Zero,
-	localGame_ = false;
-&nbsp;</pre></div><div class="code-block pub-cb reset-markup"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">35</span></div><pre class="prettyprint linenums:31">var playerController_ = new PlayerController();
+	localGame_ = false,
+	game = {};</pre></div><div class="code-block pub-cb reset-markup"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">36</span></div><pre class="prettyprint linenums:32">var playerController_ = new PlayerController();
 &nbsp;
 function newGame_(){
 	var names = playerController_.getPlayerNames();
@@ -75,7 +82,7 @@ function newGame_(){
 	shape_ = enums.CellStates.Cross;
 &nbsp;
 	if (!localGame_){
-		var options = {player: names.player || 'player 1', timestamp: new Date()};</pre></div><div class="code-block pub-cb reset-markup"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">50</span></div><pre class="prettyprint linenums:46">}
+		var options = {player: names.player || 'player 1', timestamp: new Date()};</pre></div><div class="code-block pub-cb reset-markup"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">51</span></div><pre class="prettyprint linenums:47">}
 &nbsp;
 function onGameStarted_(data){
 	var names = playerController_.getPlayerNames();
@@ -83,7 +90,7 @@ function onGameStarted_(data){
 	
 	var options = {
 		isLocal: localGame_,
-		player: names.player,</pre></div><div class="code-block pub-cb game-controller-n-new-network"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">40</span></div><pre class="prettyprint linenums:36">shape_ = enums.CellStates.Cross;
+		player: names.player,</pre></div><div class="code-block pub-cb game-controller-n-new-network"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">41</span></div><pre class="prettyprint linenums:37">shape_ = enums.CellStates.Cross;
 &nbsp;
 if (!localGame_){
 	var options = {player: names.player || 'player 1', timestamp: new Date()};
@@ -91,7 +98,7 @@ if (!localGame_){
 	mediator.publish('game-controller:new', options);
 } else {
 	mediator.publish('game-controller:new', {player: names.player || 'player 1', rival: names.rival || 'player 2'});
-	onGameStarted_();</pre></div><div class="code-block pub-cb game-controller-n-new"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">41</span></div><pre class="prettyprint linenums:37">&nbsp;
+	onGameStarted_();</pre></div><div class="code-block pub-cb game-controller-n-new"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">42</span></div><pre class="prettyprint linenums:38">&nbsp;
 if (!localGame_){
 	var options = {player: names.player || 'player 1', timestamp: new Date()};
 	mediator.publish('game-controller:new-network', options);
@@ -99,7 +106,7 @@ if (!localGame_){
 } else {
 	mediator.publish('game-controller:new', {player: names.player || 'player 1', rival: names.rival || 'player 2'});
 	onGameStarted_();
-}</pre></div><div class="code-block pub-cb game-controller-n-new"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">43</span></div><pre class="prettyprint linenums:39">		var options = {player: names.player || 'player 1', timestamp: new Date()};
+}</pre></div><div class="code-block pub-cb game-controller-n-new"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">44</span></div><pre class="prettyprint linenums:40">		var options = {player: names.player || 'player 1', timestamp: new Date()};
 		mediator.publish('game-controller:new-network', options);
 		mediator.publish('game-controller:new', options);
 	} else {
@@ -107,7 +114,7 @@ if (!localGame_){
 		onGameStarted_();
 	}
 }
-&nbsp;</pre></div><div class="code-block pub-cb game-controller-n-mode"><div class="cb-filename">public/javascripts/GameController.js:<span class="cb-line-number">65</span></div><pre class="prettyprint linenums:61">	}
+&nbsp;</pre></div><div class="code-block pub-cb game-controller-n-mode"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js:<span class="cb-line-number">65</span></div><pre class="prettyprint linenums:61">	}
 &nbsp;
 	function onSwitch_(item){
 		localGame_ = !localGame_;
@@ -115,7 +122,7 @@ if (!localGame_){
 	}
 }
 &nbsp;
-return new GameController();</pre></div><div class="code-block sub-cb socket-n-game-started"><div class="cb-filename">public/javascripts/PlayerController.js:<span class="cb-line-number">24</span></div><pre class="prettyprint linenums:20">mediator.publish('player-controller:player', names.player);
+return new GameController();</pre></div><div class="code-block sub-cb socket-n-game-started"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js:<span class="cb-line-number">24</span></div><pre class="prettyprint linenums:20">mediator.publish('player-controller:player', names.player);
 &nbsp;
 function bindListeners_(){			
 				
@@ -123,7 +130,7 @@ function bindListeners_(){
 		self.renderNames({playerName: game.player, rivalName: game.player2});
 	});
 &nbsp;
-	mediator.on('game-controller:mode', function(isLocalGame){</pre></div><div class="code-block sub-cb game-controller-n-mode"><div class="cb-filename">public/javascripts/PlayerController.js:<span class="cb-line-number">28</span></div><pre class="prettyprint linenums:24">mediator.on('socket:game-started', function(game){
+	mediator.on('game-controller:mode', function(isLocalGame){</pre></div><div class="code-block sub-cb game-controller-n-mode"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js:<span class="cb-line-number">28</span></div><pre class="prettyprint linenums:24">mediator.on('socket:game-started', function(game){
 	self.renderNames({playerName: game.player, rivalName: game.player2});
 });
 &nbsp;
@@ -131,7 +138,7 @@ mediator.on('game-controller:mode', function(isLocalGame){
 	el_.rivalName.toggle();
 });
 &nbsp;
-mediator.on('game-controller:new', function(data){</pre></div><div class="code-block sub-cb game-controller-n-new"><div class="cb-filename">public/javascripts/PlayerController.js:<span class="cb-line-number">32</span></div><pre class="prettyprint linenums:28">mediator.on('game-controller:mode', function(isLocalGame){
+mediator.on('game-controller:new', function(data){</pre></div><div class="code-block sub-cb game-controller-n-new"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js:<span class="cb-line-number">32</span></div><pre class="prettyprint linenums:28">mediator.on('game-controller:mode', function(isLocalGame){
 	el_.rivalName.toggle();
 });
 &nbsp;
@@ -139,7 +146,7 @@ mediator.on('game-controller:new', function(data){
 	self.renderNames({playerName: data.player || names.player, rivalName: data.rival || names.rival});	
 });
 &nbsp;
-el_.playerNames.on('focus', function(){</pre></div><div class="code-block pub-cb player-controller-n-player"><div class="cb-filename">public/javascripts/PlayerController.js:<span class="cb-line-number">20</span></div><pre class="prettyprint linenums:16">&nbsp;
+el_.playerNames.on('focus', function(){</pre></div><div class="code-block pub-cb player-controller-n-player"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js:<span class="cb-line-number">20</span></div><pre class="prettyprint linenums:16">&nbsp;
 var names = {};
 names.player = '';
 names.rival = '';
@@ -147,7 +154,7 @@ mediator.publish('player-controller:player', names.player);
 &nbsp;
 function bindListeners_(){			
 				
-	mediator.on('socket:game-started', function(game){</pre></div><div class="code-block pub-cb player-controller-n-player"><div class="cb-filename">public/javascripts/PlayerController.js:<span class="cb-line-number">48</span></div><pre class="prettyprint linenums:44">	container.val('player');
+	mediator.on('socket:game-started', function(game){</pre></div><div class="code-block pub-cb player-controller-n-player"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js:<span class="cb-line-number">48</span></div><pre class="prettyprint linenums:44">	container.val('player');
 }
 if (this === el_.playerName.get(0)) {
 	names.player = container.val();
@@ -155,7 +162,7 @@ if (this === el_.playerName.get(0)) {
 } else if (this === el_.rivalName.get(0)) {
 	names.rival = container.val();
 	mediator.publish('player-controller:rival', names.rival);
-	el_.rivalGameLabel.text(names.rival);</pre></div><div class="code-block pub-cb player-controller-n-rival"><div class="cb-filename">public/javascripts/PlayerController.js:<span class="cb-line-number">51</span></div><pre class="prettyprint linenums:47">			names.player = container.val();
+	el_.rivalGameLabel.text(names.rival);</pre></div><div class="code-block pub-cb player-controller-n-rival"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js:<span class="cb-line-number">51</span></div><pre class="prettyprint linenums:47">			names.player = container.val();
 			mediator.publish('player-controller:player', names.player);
 		} else if (this === el_.rivalName.get(0)) {
 			names.rival = container.val();
@@ -163,87 +170,47 @@ if (this === el_.playerName.get(0)) {
 			el_.rivalGameLabel.text(names.rival);
 		}	
 	});
-}</pre></div><div class="code-block sub-cb socket-n-game-started"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">33</span></div><pre class="prettyprint linenums:29">	}
+}</pre></div><div class="code-block sub-cb socket-n-game-started"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/ViewManager.js:<span class="cb-line-number">24</span></div><pre class="prettyprint linenums:20">	}
 }());
 &nbsp;
-$('#back-game-button').on('click', backButtonClicked);
-mediator.subscribe('socket:game-started', showGameView);
-mediator.subscribe('game-controller:new', showGameView);
-mediator.subscribe('socket:disconnected', opponentDisconnected);
+$('#back-game-button').on('click', showMenuView);
+mediator.on('socket:game-started', showGameView);
+mediator.on('game-controller:new', showGameView);
 &nbsp;
-function opponentDisconnected() {</pre></div><div class="code-block sub-cb game-controller-n-new"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">34</span></div><pre class="prettyprint linenums:30">}());
+function showGameView() {
+	if(css3Supported) {</pre></div><div class="code-block sub-cb game-controller-n-new"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/ViewManager.js:<span class="cb-line-number">25</span></div><pre class="prettyprint linenums:21">}());
 &nbsp;
-$('#back-game-button').on('click', backButtonClicked);
-mediator.subscribe('socket:game-started', showGameView);
-mediator.subscribe('game-controller:new', showGameView);
-mediator.subscribe('socket:disconnected', opponentDisconnected);
+$('#back-game-button').on('click', showMenuView);
+mediator.on('socket:game-started', showGameView);
+mediator.on('game-controller:new', showGameView);
 &nbsp;
-function opponentDisconnected() {
-	modal = new Modal({header: 'Warning!', text: 'Your opponent has disconnected :(', confirmButton: true});</pre></div><div class="code-block sub-cb modal-n-confirm-clicked"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">24</span></div><pre class="prettyprint linenums:20">&nbsp;
-	modal = new Modal({header: 'Error!', text: 'You are using the old browser version. Please install the newest one or delete your IE.'});
-	modal.launch();
-&nbsp;
-	mediator.once('modal:confirm-clicked', function() {
-		showNotSupported();
-	});
-} else {
-	showMenuView();</pre></div><div class="code-block sub-cb modal-n-confirm-clicked"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">41</span></div><pre class="prettyprint linenums:37">function opponentDisconnected() {
-	modal = new Modal({header: 'Warning!', text: 'Your opponent has disconnected :(', confirmButton: true});
-	modal.launch();
-&nbsp;
-	mediator.once('modal:confirm-clicked', function() {
-		showMenuView();
-	});
-}
-&nbsp;</pre></div><div class="code-block sub-cb modal-n-confirm-clicked"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">50</span></div><pre class="prettyprint linenums:46">function backButtonClicked() {
-	modal = new Modal({header: 'Warning!', text: 'If you exit from game you\'ll lost all turns. Do you want to proceed?', confirmButton: true, cancelButton: true});
-	modal.launch();
-&nbsp;
-	mediator.once('modal:confirm-clicked', function() {
-		showMenuView();
-		mediator.publish('view-manager:left-game', {});
-	});
-}</pre></div><div class="code-block sub-cb socket-n-disconnected"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">35</span></div><pre class="prettyprint linenums:31">&nbsp;
-$('#back-game-button').on('click', backButtonClicked);
-mediator.subscribe('socket:game-started', showGameView);
-mediator.subscribe('game-controller:new', showGameView);
-mediator.subscribe('socket:disconnected', opponentDisconnected);
-&nbsp;
-function opponentDisconnected() {
-	modal = new Modal({header: 'Warning!', text: 'Your opponent has disconnected :(', confirmButton: true});
-	modal.launch();</pre></div><div class="code-block pub-cb view-manager-n-left-game"><div class="cb-filename">public/javascripts/ViewManager.js:<span class="cb-line-number">52</span></div><pre class="prettyprint linenums:48">	modal.launch();
-&nbsp;
-	mediator.once('modal:confirm-clicked', function() {
-		showMenuView();
-		mediator.publish('view-manager:left-game', {});
-	});
-}
-&nbsp;
-function showGameView() {</pre></div><div class="code-block sub-cb socket-n-games-list"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">43</span></div><pre class="prettyprint linenums:39">}, 1000);
+function showGameView() {
+	if(css3Supported) {
+		el_.menuView.hide();</pre></div><div class="code-block sub-cb socket-n-games-list"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js:<span class="cb-line-number">42</span></div><pre class="prettyprint linenums:38">	});
+}, 1000);
 &nbsp;
 $(document).on('click', '.join-button', onJoin_);
-$(document).on('click', '.random-button', onRandom_);
 mediator.on('socket:games-list', onGamesList_);
 mediator.on('socket:game-added', onGameAdd_);
 mediator.on('socket:game-removed', onGameRemoved_);
 &nbsp;
-function onJoin_(){</pre></div><div class="code-block sub-cb socket-n-game-added"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">44</span></div><pre class="prettyprint linenums:40">&nbsp;
+function onJoin_(){</pre></div><div class="code-block sub-cb socket-n-game-added"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js:<span class="cb-line-number">43</span></div><pre class="prettyprint linenums:39">}, 1000);
+&nbsp;
 $(document).on('click', '.join-button', onJoin_);
-$(document).on('click', '.random-button', onRandom_);
 mediator.on('socket:games-list', onGamesList_);
 mediator.on('socket:game-added', onGameAdd_);
 mediator.on('socket:game-removed', onGameRemoved_);
 &nbsp;
 function onJoin_(){
-	/*jshint validthis:true */</pre></div><div class="code-block sub-cb socket-n-game-removed"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">45</span></div><pre class="prettyprint linenums:41">$(document).on('click', '.join-button', onJoin_);
-$(document).on('click', '.random-button', onRandom_);
+	/*jshint validthis:true */</pre></div><div class="code-block sub-cb socket-n-game-removed"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js:<span class="cb-line-number">44</span></div><pre class="prettyprint linenums:40">&nbsp;
+$(document).on('click', '.join-button', onJoin_);
 mediator.on('socket:games-list', onGamesList_);
 mediator.on('socket:game-added', onGameAdd_);
 mediator.on('socket:game-removed', onGameRemoved_);
 &nbsp;
 function onJoin_(){
 	/*jshint validthis:true */
-	var container = $(this);</pre></div><div class="code-block sub-cb player-controller-n-player"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">84</span></div><pre class="prettyprint linenums:80">	}
+	var container = $(this);</pre></div><div class="code-block sub-cb player-controller-n-player"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js:<span class="cb-line-number">79</span></div><pre class="prettyprint linenums:75">	}
 }
 &nbsp;
 function bindListeners_(){
@@ -251,7 +218,7 @@ function bindListeners_(){
 		self.playerName = name;
 	});
 &nbsp;
-	mediator.on('game-controller:mode', function(isLocalGame){</pre></div><div class="code-block sub-cb game-controller-n-mode"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">88</span></div><pre class="prettyprint linenums:84">		mediator.on('player-controller:player', function(name){
+	mediator.on('game-controller:mode', function(isLocalGame){</pre></div><div class="code-block sub-cb game-controller-n-mode"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js:<span class="cb-line-number">83</span></div><pre class="prettyprint linenums:79">		mediator.on('player-controller:player', function(name){
 			self.playerName = name;
 		});
 &nbsp;
@@ -259,7 +226,7 @@ function bindListeners_(){
 			el_.gamesListContainer.toggle();
 		});
 	}
-}</pre></div><div class="code-block pub-cb game-list-n-join"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">52</span></div><pre class="prettyprint linenums:48">	/*jshint validthis:true */
+}</pre></div><div class="code-block pub-cb game-list-n-join"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js:<span class="cb-line-number">51</span></div><pre class="prettyprint linenums:47">	/*jshint validthis:true */
 	var container = $(this);
 	var id = container.data('id');
 	if (typeof id !== 'undefined'){
@@ -267,15 +234,7 @@ function bindListeners_(){
 	}
 }
 &nbsp;
-function onRandom_() {</pre></div><div class="code-block pub-cb game-list-n-random"><div class="cb-filename">public/javascripts/GamesList.js:<span class="cb-line-number">57</span></div><pre class="prettyprint linenums:53">	}
-}
-&nbsp;
-function onRandom_() {
-	mediator.publish('game-list:random', { name: self.playerName || 'player 2'});
-}
-&nbsp;
-function onGamesList_(list){
-	_.each(list, function(it, idx){</pre></div><div class="code-block sub-cb game-n-turn-local"><div class="cb-filename">public/javascripts/SocketHandler.js:<span class="cb-line-number">16</span></div><pre class="prettyprint linenums:12">function SocketHandler() {
+function onGamesList_(list){</pre></div><div class="code-block sub-cb game-n-turn-local"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/SocketHandler.js:<span class="cb-line-number">16</span></div><pre class="prettyprint linenums:12">function SocketHandler() {
 	self = this;
 	this.socket = io.connect('http://localhost:1414');
 &nbsp;
@@ -283,23 +242,7 @@ function onGamesList_(list){
 		delete data.cellDiv;
 		self.socket.emit('turn', data);
 	});
-}</pre></div><div class="code-block pub-cb modal-n-cancel-clicked"><div class="cb-filename">public/javascripts/ModalWindow.js:<span class="cb-line-number">21</span></div><pre class="prettyprint linenums:17">el_.body = $('body');
-el_.template = $('#modal-template');
-&nbsp;
-$(document).on('click', '#modal-button-cancel', function() {
-	mediator.publish('modal:cancel-clicked');
-	$('#modal-window').remove();
-});
-$(document).on('click', '#modal-button-confirm', function() {
-	mediator.publish('modal:confirm-clicked');</pre></div><div class="code-block pub-cb modal-n-confirm-clicked"><div class="cb-filename">public/javascripts/ModalWindow.js:<span class="cb-line-number">25</span></div><pre class="prettyprint linenums:21">	mediator.publish('modal:cancel-clicked');
-	$('#modal-window').remove();
-});
-$(document).on('click', '#modal-button-confirm', function() {
-	mediator.publish('modal:confirm-clicked');
-	$('#modal-window').remove();
-});
-&nbsp;
-var templateCompiled = _.template(el_.template.html());</pre></div><div class="code-block pub-cb application-n-chat"><div class="cb-filename">public/javascripts/libs/mediator.js:<span class="cb-line-number">330</span></div><pre class="prettyprint linenums:326">&nbsp;
+}</pre></div><div class="code-block pub-cb application-n-chat"><div class="cb-filename">e:/My_one/projects/tic-tac-hack/public/javascripts/libs/mediator.js:<span class="cb-line-number">330</span></div><pre class="prettyprint linenums:326">&nbsp;
     // Publishes arbitrary data to a given channel namespace. Channels are
     // called recursively downwards; a post to application:chat will post to
     // application:chat:receive and application:chat:derp:test:beta:bananas.
@@ -322,8 +265,8 @@ var templateCompiled = _.template(el_.template.html());</pre></div><div class="c
 		<span class="pubs-count">{{pubs}} pubs</span>
 	</script>
 	<script>
-		window.initialDataFromCapo = {"subscriptions":{"reset-markup":[{"file":"public/javascripts/Game.js","line":77}],"socket:turn-network":[{"file":"public/javascripts/Game.js","line":80}],"socket:game-started":[{"file":"public/javascripts/GameController.js","line":25},{"file":"public/javascripts/PlayerController.js","line":23},{"file":"public/javascripts/ViewManager.js","line":32}],"socket:games-list":[{"file":"public/javascripts/GamesList.js","line":42}],"socket:game-added":[{"file":"public/javascripts/GamesList.js","line":43}],"socket:game-removed":[{"file":"public/javascripts/GamesList.js","line":44}],"player-controller:player":[{"file":"public/javascripts/GamesList.js","line":83}],"game-controller:mode":[{"file":"public/javascripts/GamesList.js","line":87},{"file":"public/javascripts/PlayerController.js","line":27}],"game-controller:new":[{"file":"public/javascripts/PlayerController.js","line":31},{"file":"public/javascripts/ViewManager.js","line":33}],"game:turn-local":[{"file":"public/javascripts/SocketHandler.js","line":15}],"modal:confirm-clicked":[{"file":"public/javascripts/ViewManager.js","line":23},{"file":"public/javascripts/ViewManager.js","line":40},{"file":"public/javascripts/ViewManager.js","line":49}],"socket:disconnected":[{"file":"public/javascripts/ViewManager.js","line":34}]},"triggers":{"game:turn-local":[{"file":"public/javascripts/Game.js","line":123}],"reset-markup":[{"file":"public/javascripts/GameController.js","line":34},{"file":"public/javascripts/GameController.js","line":49}],"game-controller:new-network":[{"file":"public/javascripts/GameController.js","line":39}],"game-controller:new":[{"file":"public/javascripts/GameController.js","line":40},{"file":"public/javascripts/GameController.js","line":42}],"game-controller:mode":[{"file":"public/javascripts/GameController.js","line":64}],"game-list:join":[{"file":"public/javascripts/GamesList.js","line":51}],"game-list:random":[{"file":"public/javascripts/GamesList.js","line":56}],"modal:cancel-clicked":[{"file":"public/javascripts/ModalWindow.js","line":20}],"modal:confirm-clicked":[{"file":"public/javascripts/ModalWindow.js","line":24}],"player-controller:player":[{"file":"public/javascripts/PlayerController.js","line":19},{"file":"public/javascripts/PlayerController.js","line":47}],"player-controller:rival":[{"file":"public/javascripts/PlayerController.js","line":50}],"view-manager:left-game":[{"file":"public/javascripts/ViewManager.js","line":51}],"application:chat":[{"file":"public/javascripts/libs/mediator.js","line":329}]},"files":["public/javascripts/Cell.js","public/javascripts/Field.js","public/javascripts/Game.js","public/javascripts/GameController.js","public/javascripts/GamesList.js","public/javascripts/ModalWindow.js","public/javascripts/PlayerController.js","public/javascripts/SocketHandler.js","public/javascripts/ViewManager.js","public/javascripts/libs/flat-switch.js","public/javascripts/libs/jquery.js","public/javascripts/libs/jquery.min.js","public/javascripts/libs/mediator.js","public/javascripts/libs/require.js","public/javascripts/libs/switch.js","public/javascripts/libs/underscore-min.js","public/javascripts/main.js","public/javascripts/shared/Sockiator.js","public/javascripts/shared/enums.js","public/javascripts/shared/utils.js"]};
-		window.fileRelatedDataFromCapo = {"public/javascripts/Game.js":[77,80,123],"public/javascripts/GameController.js":[25,34,49,39,40,42,64],"public/javascripts/PlayerController.js":[23,27,31,19,47,50],"public/javascripts/ViewManager.js":[32,33,23,40,49,34,51],"public/javascripts/GamesList.js":[42,43,44,83,87,51,56],"public/javascripts/SocketHandler.js":[15],"public/javascripts/ModalWindow.js":[20,24],"public/javascripts/libs/mediator.js":[329]};
+		window.initialDataFromCapo = {"subscriptions":{"reset-markup":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js","line":77}],"socket:turn-network":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js","line":92}],"socket:game-started":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":25},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","line":23},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/ViewManager.js","line":23}],"socket:games-list":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","line":41}],"socket:game-added":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","line":42}],"socket:game-removed":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","line":43}],"player-controller:player":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","line":78}],"game-controller:mode":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","line":82},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","line":27}],"game-controller:new":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","line":31},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/ViewManager.js","line":24}],"game:turn-local":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/SocketHandler.js","line":15}]},"triggers":{"game:turn-local":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js","line":123}],"reset-markup":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":35},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":50}],"game-controller:new-network":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":40}],"game-controller:new":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":41},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":43}],"game-controller:mode":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","line":64}],"game-list:join":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","line":50}],"player-controller:player":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","line":19},{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","line":47}],"player-controller:rival":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","line":50}],"application:chat":[{"file":"e:/My_one/projects/tic-tac-hack/public/javascripts/libs/mediator.js","line":329}]},"files":["e:/My_one/projects/tic-tac-hack/public/javascripts/Cell.js","e:/My_one/projects/tic-tac-hack/public/javascripts/Field.js","e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js","e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js","e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js","e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js","e:/My_one/projects/tic-tac-hack/public/javascripts/SocketHandler.js","e:/My_one/projects/tic-tac-hack/public/javascripts/ViewManager.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/flat-switch.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/jquery.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/jquery.min.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/mediator.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/require.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/switch.js","e:/My_one/projects/tic-tac-hack/public/javascripts/libs/underscore-min.js","e:/My_one/projects/tic-tac-hack/public/javascripts/main.js","e:/My_one/projects/tic-tac-hack/public/javascripts/shared/Sockiator.js","e:/My_one/projects/tic-tac-hack/public/javascripts/shared/enums.js","e:/My_one/projects/tic-tac-hack/public/javascripts/shared/utils.js"]};
+		window.fileRelatedDataFromCapo = {"e:/My_one/projects/tic-tac-hack/public/javascripts/Game.js":[77,92,123],"e:/My_one/projects/tic-tac-hack/public/javascripts/GameController.js":[25,35,50,40,41,43,64],"e:/My_one/projects/tic-tac-hack/public/javascripts/PlayerController.js":[23,27,31,19,47,50],"e:/My_one/projects/tic-tac-hack/public/javascripts/ViewManager.js":[23,24],"e:/My_one/projects/tic-tac-hack/public/javascripts/GamesList.js":[41,42,43,78,82,50],"e:/My_one/projects/tic-tac-hack/public/javascripts/SocketHandler.js":[15],"e:/My_one/projects/tic-tac-hack/public/javascripts/libs/mediator.js":[329]};
 	</script>
 	<script src="app.js"></script>
 </body>
