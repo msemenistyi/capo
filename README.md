@@ -109,7 +109,9 @@ of event name (e.g. `-e ap` will find all the events starting with these chars:
 is `html`. String value should be specified right after flag.  
 - **verbose** -v --verbose - log all the files processed and other info. **Default** `false`.  
 - **strict**  --strict - throw error on sub for event with 0 pubs. **Default** `false`.
-- **generate** -g --generate - generate file with listeners for all the triggers. **Default** `false`.  
+- **generate** -g --generate - generate file with listeners for all the triggers. **Default** `false`. 
+-**exclude-gitignore** -n --not-exclude-gitignore - specifies if capo should not exclude gitignored files. **Default** `false`.  
+-**ignore** -i --ignore - specifies glob path which will be ignored by capo.  
 - **help**    -h --help - show help
 
 ##Spy generator
@@ -231,6 +233,9 @@ This code snippet will be interpreted as one event named
 `asd:asd gdf:gdf asda:asd`. This feature may be implemeted and stay hidden behind 
 the flag of space splitting, but I doubt that there will be request for 
 supporting this.
+
+##Release Notes
+1.0.0 Add support of files ignoring explicitly and via ,gitignore.
 
 ##Contributing
 Feel free to open issues and send PRs, though make sure that you create tests
