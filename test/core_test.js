@@ -219,4 +219,28 @@ describe('Excludes: capo should', function(){
 			done();
 		});
 	});
+
+	it('exclude .gignore files', function(done){
+		capo(__dirname + '/fixtures').find(function(err, data){
+			err.should.be.not.ok;
+
+			Object.keys(data.files).length.should.be.equal(10);
+
+			done();
+		});
+
+	});
+
+	it('not exclude .gignore files if excludeGitignore is false', function(done){
+		capo(__dirname + '/fixtures', 'qwe', {
+			excludeGitignore: false
+		}).find(function(err, data){
+			err.should.be.not.ok;
+
+			Object.keys(data.files).length.should.be.equal(12);
+
+			done();
+		});
+
+	});
 });
