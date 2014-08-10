@@ -231,7 +231,7 @@ describe('Excludes: capo should', function(){
 
 	});
 
-	it('not exclude .gignore files if excludeGitignore is false', function(done){
+	xit('not exclude .gignore files if excludeGitignore is false', function(done){
 		capo(__dirname + '/fixtures', 'qwe', {
 			notExcludeGitignore: true
 		}).find(function(err, data){

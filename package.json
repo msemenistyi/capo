@@ -1,6 +1,6 @@
 {
   "name": "capo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Understand subscriptions and listeners. Get the list of events or event handlers. Capo is a complement for Mediator",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,7 @@
   "dependencies": {
     "async": "~0.2.10",
     "colors": "~0.6.2",
-    "globule": "^0.2.0",
+    "globule": "~0.2.0",
     "pick-lines-from-file": "~0.2.2",
     "realist": "~0.2.5",
     "text-table": "~0.2.0"
