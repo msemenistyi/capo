@@ -209,7 +209,7 @@ describe('Excludes: capo should', function(){
 
 	it('exclude files by specified in exclude option', function(done){
 		var options = {
-			excludePath: __dirname + '/fixtures/excludes/**/*.js'
+			ignore: __dirname + '/fixtures/excludes/**/*.js'
 		};
 		capo(__dirname + '/fixtures/', 'qwe', options).find(function(err, data){
 			err.should.be.not.ok;
@@ -233,7 +233,7 @@ describe('Excludes: capo should', function(){
 
 	it('not exclude .gignore files if excludeGitignore is false', function(done){
 		capo(__dirname + '/fixtures', 'qwe', {
-			excludeGitignore: false
+			notExcludeGitignore: true
 		}).find(function(err, data){
 			err.should.be.not.ok;
 

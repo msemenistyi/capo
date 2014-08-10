@@ -13,6 +13,8 @@ var aliases = {
 	'verbose': ['v', 'verbose'],
 	'strict': ['strict'],
 	'generate': ['g', 'generate'],
+	'notExcludeGitignore': ['n', 'not-exclude-gitignore'],
+	'ignore': ['i', 'ignore'],
 	'help': ['h', 'help']
 };
 
