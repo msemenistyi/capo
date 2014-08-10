@@ -204,3 +204,19 @@ describe('Array of files: capo should', function(){
 	});
 
 });
+
+describe('Excludes: capo should', function(){
+
+	it('exclude files by specified in exclude option', function(done){
+		var options = {
+			excludePath: __dirname + '/fixtures/excludes/**/*.js'
+		};
+		capo(__dirname + '/fixtures/', 'qwe', options).find(function(err, data){
+			err.should.be.not.ok;
+
+			Object.keys(data.subscriptions).length.should.be.equal(3);
+
+			done();
+		});
+	});
+});

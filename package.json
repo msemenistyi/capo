@@ -33,11 +33,11 @@
     "should": "~3.1.2"
   },
   "dependencies": {
-    "glob": "~3.2.8",
     "async": "~0.2.10",
+    "colors": "~0.6.2",
+    "globule": "^0.2.0",
     "pick-lines-from-file": "~0.2.2",
     "realist": "~0.2.5",
-    "text-table": "~0.2.0",
-    "colors": "~0.6.2"
+    "text-table": "~0.2.0"
   }
 }
